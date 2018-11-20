@@ -1,3 +1,56 @@
-<p>
-  detail-events works!
-</p>
+<ion-grid>
+
+    <ion-row align-items-center>
+        <ion-col size="10">
+            <ion-item>
+                <ion-input value="Nom de l'évènement" readonly></ion-input>
+            </ion-item>
+        </ion-col>
+
+        <ion-col size="2" text-center>
+            <ion-toggle checked></ion-toggle>
+        </ion-col>
+    </ion-row>
+    <ion-item>
+        <ion-label text-wrap>
+            Multiline text that should wrap when it is too long
+            to fit on one line in the item.
+            Multiline text that should wrap when it is too long
+            to fit on one line in the item.
+            Multiline text that should wrap when it is too long
+            to fit on one line in the item.
+        </ion-label>
+    </ion-item>
+    <ion-row>
+        <ion-col size="6">
+            <ion-item>
+                <ion-input value="Heure de début" readonly></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col size="6">
+            <ion-item>
+                <ion-input value="Heure de fin" readonly></ion-input>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row text-center>
+        <ion-col>
+            <ion-button color="success">
+                <ion-icon slot="start" name="add"></ion-icon>
+                Add
+            </ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button  color="tertiary">
+                <ion-icon slot="start" name="open"></ion-icon>
+                Edit
+          </ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button  color="danger">
+                <ion-icon slot="start" name="close"></ion-icon>
+                Delete
+          </ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>
