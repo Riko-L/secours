@@ -13,7 +13,9 @@ import { DetailEventsComponent } from './detail-events/detail-events.component';
 import { MonthCalendarComponent } from './month-calendar/month-calendar.component';
 
 @NgModule({
-  declarations: [AppComponent, DayCalendarComponent, DetailEventsComponent, MonthCalendarComponent],
+  declarations: [
+    AppComponent,
+    ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [

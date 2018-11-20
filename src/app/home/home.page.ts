@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import * as moment from 'moment';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
@@ -8,6 +8,6 @@ import * as moment from 'moment';
 })
 export class HomePage {
   
-  time = moment().format();
+  
 
 }

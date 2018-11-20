@@ -1,3 +1,9 @@
-<p>
-  month-calendar works!
-</p>
+<ion-grid>
+  <ion-row wrap	> 
+    <ion-col *ngFor="let event of calendarEvents" size="12" size-sm>
+
+      <div>{{ event.day }} {{event.nameDay}}</div>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
