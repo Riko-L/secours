@@ -7,16 +7,6 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngFor="let data of mydata ; let i=index">
-    <div *ngIf="i!=0">
-      
-      {{ data.title }} <br/>
-      {{ data.start_time }} <br/>
-      {{ data.end_time }} <br/>
-      {{ data.description }} <br/>
-      {{ data.location }} <br/>
-    </div>
-  </div>
   <app-month-calendar></app-month-calendar>
   <app-detail-events></app-detail-events>
   <br/>

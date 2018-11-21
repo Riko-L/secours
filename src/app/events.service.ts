@@ -25,9 +25,9 @@ export class EventsService {
   getAllEvents() {
     return this.http.get(this.dbcouch + this.all_docs).pipe(
       map(events => {
-        return events.rows.map(ev => {
+        return events.rows.map(ev=> {
           return ev.doc;
-        });
+        }) ;
       }),
       catchError(this.handleError('getAllEvents', []))
     );

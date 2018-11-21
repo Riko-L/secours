@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { EventsService } from '../events.service';
-import { Events } from '../events';
-
 
 @Component({
   selector: 'app-home',
@@ -10,18 +7,9 @@ import { Events } from '../events';
 })
 export class HomePage {
 
-  mydata: Events[];
-
-  constructor(private eventsService: EventsService) { }
+  constructor() { }
 
   ngOnInit(): void {
-
-    this.getData();
-
-  }
-
-  getData() {
-    this.eventsService.getAllEvents().subscribe(data => this.mydata = data);
   }
 
 }
