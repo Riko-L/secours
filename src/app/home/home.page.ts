@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
-import * as moment from 'moment';
+import { Component } from '@angular/core';
+import { EventsService } from '../events.service';
+import { Events } from '../events';
+
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,25 @@ import * as moment from 'moment';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  
-  time = moment().format();
+
+  mydata: Events[];
+
+  constructor(private eventsService: EventsService) { }
+
+  ngOnInit(): void {
+
+    this.getData();
+
+  }
+
+  getData() {
+    this.eventsService.getAllEvents().subscribe(data => {
+      this.mydata = data.rows.map((data) => {
+        if (typeof data !== "undefined") {
+          return data.doc;
+        }
+      });
+    });
+  }
 
 }

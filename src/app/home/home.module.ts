@@ -5,8 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
-import {DetailEventsComponent} from '../detail-events/detail-events.component';
+
 import {ButtonEventsComponent} from '../button-events/button-events.component';
+import { MonthCalendarComponent } from '../month-calendar/month-calendar.component';
+import { DetailEventsComponent } from '../detail-events/detail-events.component';
+import { DayCalendarComponent } from '../day-calendar/day-calendar.component';
+
 
 @NgModule({
   imports: [
@@ -21,9 +25,16 @@ import {ButtonEventsComponent} from '../button-events/button-events.component';
     ])
   ],
   declarations: [
-      HomePage,
-      DetailEventsComponent,
-      ButtonEventsComponent
+    ButtonEventsComponent
+    HomePage,
+    MonthCalendarComponent,
+    DetailEventsComponent,
+    DayCalendarComponent
+  ],
+  exports: [
+    MonthCalendarComponent,
+    DetailEventsComponent,
+    DayCalendarComponent
   ]
 })
-export class HomePageModule {}
+export class HomePageModule { }

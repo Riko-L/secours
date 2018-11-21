@@ -10,16 +10,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DayCalendarComponent } from './day-calendar/day-calendar.component';
 import { MonthCalendarComponent } from './month-calendar/month-calendar.component';
+import { EventsService } from './events.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-      AppComponent,
-      DayCalendarComponent,
-      MonthCalendarComponent,
-  ],
-  entryComponents: [
-  ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+    AppComponent,
+    ],
+  entryComponents: [],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,
