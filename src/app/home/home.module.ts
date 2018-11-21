@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import {DetailEventsComponent} from '../detail-events/detail-events.component';
+import {ButtonEventsComponent} from '../button-events/button-events.component';
 
 @NgModule({
   imports: [
@@ -18,6 +20,10 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [
+      HomePage,
+      DetailEventsComponent,
+      ButtonEventsComponent
+  ]
 })
 export class HomePageModule {}

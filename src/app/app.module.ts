@@ -9,12 +9,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DayCalendarComponent } from './day-calendar/day-calendar.component';
-import { DetailEventsComponent } from './detail-events/detail-events.component';
 import { MonthCalendarComponent } from './month-calendar/month-calendar.component';
 
 @NgModule({
-  declarations: [AppComponent, DayCalendarComponent, DetailEventsComponent, MonthCalendarComponent],
-  entryComponents: [],
+  declarations: [
+      AppComponent,
+      DayCalendarComponent,
+      MonthCalendarComponent,
+  ],
+  entryComponents: [
+  ],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
