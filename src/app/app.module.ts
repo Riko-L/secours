@@ -9,7 +9,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DayCalendarComponent } from './day-calendar/day-calendar.component';
-import { DetailEventsComponent } from './detail-events/detail-events.component';
 import { MonthCalendarComponent } from './month-calendar/month-calendar.component';
 import { EventsService } from './events.service';
 import { HttpClientModule } from '@angular/common/http';

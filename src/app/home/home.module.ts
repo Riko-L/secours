@@ -4,8 +4,9 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-
 import { HomePage } from './home.page';
+
+import {ButtonEventsComponent} from '../button-events/button-events.component';
 import { MonthCalendarComponent } from '../month-calendar/month-calendar.component';
 import { DetailEventsComponent } from '../detail-events/detail-events.component';
 import { DayCalendarComponent } from '../day-calendar/day-calendar.component';
@@ -24,10 +25,12 @@ import { DayCalendarComponent } from '../day-calendar/day-calendar.component';
     ])
   ],
   declarations: [
+    ButtonEventsComponent
     HomePage,
     MonthCalendarComponent,
     DetailEventsComponent,
-    DayCalendarComponent],
+    DayCalendarComponent
+  ],
   exports: [
     MonthCalendarComponent,
     DetailEventsComponent,
