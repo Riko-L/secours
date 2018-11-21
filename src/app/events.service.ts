@@ -23,17 +23,22 @@ export class EventsService {
   }
 
   getAllEvents() {
-    return this.http.get<Events[]>(this.dbcouch + this.all_docs).pipe(
+    return this.http.get(this.dbcouch + this.all_docs).pipe(
+      map(events => {
+        return events.rows.map(ev => {
+          return ev.doc;
+        });
+      }),
       catchError(this.handleError('getAllEvents', []))
     );
   }
 
   setTimerRequest() {
-    let nbr =0;
+    let nbr = 0;
     let interVal = setInterval(() => {
       console.log("J'ai mis a jour les données %s fois", ++nbr)
       this.getAllEvents();
-    }, 3000)
+    }, 1000 * 3600)
   }
 
 
