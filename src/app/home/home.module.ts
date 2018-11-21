@@ -25,7 +25,7 @@ import { DayCalendarComponent } from '../day-calendar/day-calendar.component';
     ])
   ],
   declarations: [
-    ButtonEventsComponent
+    ButtonEventsComponent,
     HomePage,
     MonthCalendarComponent,
     DetailEventsComponent,

@@ -21,13 +21,7 @@ export class HomePage {
   }
 
   getData() {
-    this.eventsService.getAllEvents().subscribe(data => {
-      this.mydata = data.rows.map((data) => {
-        if (typeof data !== "undefined") {
-          return data.doc;
-        }
-      });
-    });
+    this.eventsService.getAllEvents().subscribe(data => this.mydata = data);
   }
 
 }
