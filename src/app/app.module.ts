@@ -11,11 +11,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { DayCalendarComponent } from './day-calendar/day-calendar.component';
 import { DetailEventsComponent } from './detail-events/detail-events.component';
 import { MonthCalendarComponent } from './month-calendar/month-calendar.component';
+import { EventsService } from './events.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, DayCalendarComponent, DetailEventsComponent, MonthCalendarComponent],
+  declarations: [
+    AppComponent,
+    ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,

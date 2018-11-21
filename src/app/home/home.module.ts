@@ -4,7 +4,12 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+
 import { HomePage } from './home.page';
+import { MonthCalendarComponent } from '../month-calendar/month-calendar.component';
+import { DetailEventsComponent } from '../detail-events/detail-events.component';
+import { DayCalendarComponent } from '../day-calendar/day-calendar.component';
+
 
 @NgModule({
   imports: [
@@ -18,6 +23,15 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [
+    HomePage,
+    MonthCalendarComponent,
+    DetailEventsComponent,
+    DayCalendarComponent],
+  exports: [
+    MonthCalendarComponent,
+    DetailEventsComponent,
+    DayCalendarComponent
+  ]
 })
-export class HomePageModule {}
+export class HomePageModule { }
