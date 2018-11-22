@@ -1,0 +1,9 @@
+ion-card-content ion-label {
+  padding-left: 15px;
+}
+
+@media screen and (min-width: 769px ) {
+  ion-card {
+    display: none;
+  }
+}

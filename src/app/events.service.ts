@@ -42,7 +42,7 @@ export class EventsService {
 
   dbcouch: string = "https://alf74.alwaysdata.net/data/alf74_agenda_papeteries/";
 
-  all_docs: string = "_all_docs?include_docs=true"
+  all_docs: string = "_all_docs?include_docs=true";
 
   constructor(private http: HttpClient) {
     this.setTimerRequest();
