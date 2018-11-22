@@ -44,10 +44,6 @@ export class EventsService {
 
   all_docs: string = "_all_docs?include_docs=true";
 
-  find: string = "_find?include_docs=true"
-
-
-
   constructor(private http: HttpClient) {
     this.setTimerRequest();
   }
