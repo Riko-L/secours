@@ -2,9 +2,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Events } from '../app/events';
 
+export interface Data {
+  total_rows: number;
+  offset:     number;
+  rows:       Row[];
+}
 
+export interface Row {
+  id:    string;
+  key:   string;
+  value: Value;
+  doc:   Events;
+}
+
+export interface Events {
+  _id:                  string;
+  _rev:                 string;
+  validate_doc_update?: string;
+  language?:            string;
+  title?:               string;
+  start_time?:          string;
+  end_time?:            string;
+  location?:            string;
+  description?:         string;
+}
+
+export interface Value {
+  rev: string;
+}
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -22,13 +48,9 @@ export class EventsService {
     this.setTimerRequest();
   }
 
-  getAllEvents() {
-    return this.http.get(this.dbcouch + this.all_docs).pipe(
-      map(events => {
-        return events.rows.map(ev=> {
-          return ev.doc;
-        }) ;
-      }),
+  getAllEvents(): Observable<Events[]> {
+    return this.http.get<Data>(this.dbcouch + this.all_docs).pipe(
+      map(data => data.rows.map( row => row.doc)),
       catchError(this.handleError('getAllEvents', []))
     );
   }
