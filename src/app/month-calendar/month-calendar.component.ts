@@ -105,7 +105,7 @@ export class MonthCalendarComponent implements OnInit, OnChanges {
     const firstOfMonth = moment(currentMoment).startOf('month').day();
     const firstDayOfGrid = moment(currentMoment).startOf('month').subtract(firstOfMonth, 'days');
     const start = firstDayOfGrid.date();
-    return _.range(start, start + 42)
+    return _.range(start, start + 35)
             .map((date: number): CalendarDate => {
               const d = moment(firstDayOfGrid).date(date);
               return {

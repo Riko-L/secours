@@ -1,43 +1,35 @@
 <ion-grid>
+
   <ion-row text-center align-items-center>
     <ion-col size-xs="3">
-      <ion-button (click)="prevMonth()">
+      <ion-button (click)="prevMonth()" color="dark">
         <ion-icon slot="icon-only" name="skip-backward"></ion-icon>
       </ion-button>
     </ion-col>
     <ion-col size-xs="6">
-      <ion-label>{{ currentDate.format('MMMM') + " " }}</ion-label>
-      <ion-label>{{ currentDate.format('YYYY') }}</ion-label>
+      <ion-text>{{ currentDate.format('MMMM') + " " }}</ion-text>
+      <ion-text>{{ currentDate.format('YYYY') }}</ion-text>
     </ion-col>
     <ion-col size-xs="3">
-      <ion-button (click)="nextMonth()">
+      <ion-button (click)="nextMonth()" color="dark">
         <ion-icon slot="icon-only" name="skip-forward"></ion-icon>
       </ion-button>
     </ion-col>
   </ion-row>
+  <br>
   <ion-row>
-    <ion-col *ngFor="let day of dayNames" text-center>{{ day }}</ion-col>
+    <ion-col class="dayNames" *ngFor="let day of dayNames" text-center>{{ day }}</ion-col>
   </ion-row>
 
-  <ion-grid>
     <ion-row *ngFor="let week of weeks">
-
       <ion-col *ngFor="let day of week">
         <div class="dayCase" *ngIf="day.mDate.format('dd') === 'Su'">
-
           <app-day-calendar [dayDate]="day"></app-day-calendar>
-
-
         </div>
         <div class="dayCase" *ngIf="day.mDate.format('dd') !== 'Su'">
-
           <app-day-calendar [dayDate]="day"></app-day-calendar>
-
-
         </div>
-
-
       </ion-col>
     </ion-row>
-  </ion-grid>
+
 </ion-grid>

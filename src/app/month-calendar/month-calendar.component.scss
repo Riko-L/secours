@@ -1,12 +1,43 @@
-.dayCase{
-    border:solid 0.05em;
-    border-radius: 0.2em;
-    text-align: center;
-    background-color: coral;
-    height: 2rem;
-    width: 2rem;
-}
 
+ion-text {
+    font-size: xx-large;
+}
+.dayNames {
+    font-size: x-large;
+}
+app-day-calendar {
+    font-size: x-large;
+}
+.dayCase{
+    height: 150px;
+    border-radius: 20px;
+    background-color: darkgrey;
+}
+@media screen and (max-width: 992px) {
+    .dayCase {
+        height: 100px;
+    }
+    ion-text {
+        font-size: x-large;
+    }
+    .dayNames {
+        font-size: large;
+    }
+}
+@media screen and (max-width: 650px) {
+    .dayCase {
+        height: 50px;
+    }
+    app-day-calendar {
+        font-size: medium;
+    }
+    ion-text {
+        font-size: large;
+    }
+    .dayNames {
+        font-size: medium;
+    }
+}
 .dayCase:hover{
-    background-color: aqua;
+    background-color: whitesmoke;
 }
