@@ -38,14 +38,14 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class EventsService {
+export class DataBaseService {
 
   dbcouch: string = "https://alf74.alwaysdata.net/data/alf74_agenda_papeteries/";
 
   all_docs: string = "_all_docs?include_docs=true";
 
   constructor(private http: HttpClient) {
-    this.setTimerRequest();
+    
   }
 
   getAllEvents(): Observable<Events[]> {
@@ -54,15 +54,6 @@ export class EventsService {
       catchError(this.handleError('getAllEvents', []))
     );
   }
-
-  setTimerRequest() {
-    let nbr = 0;
-    let interVal = setInterval(() => {
-      console.log("J'ai mis a jour les données %s fois", ++nbr)
-      this.getAllEvents();
-    }, 1000 * 3600)
-  }
-
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

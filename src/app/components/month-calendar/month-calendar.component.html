@@ -23,10 +23,20 @@
 
     <ion-row *ngFor="let week of weeks">
       <ion-col *ngFor="let day of week">
-        <div class="dayCase" *ngIf="day.mDate.format('dd') === 'Su'">
-          <app-day-calendar [dayDate]="day"></app-day-calendar>
+        <div (click)="onClickDay(day)" class="dayCase" *ngIf="day.isWeek" [ngClass]="{
+          'weekDay': true,
+          'hideDay' : !day.isSelectedMonth,
+          'hover' :false,
+          'today' : day.today
+        }">
+          <app-day-calendar [dayDate]="day" ></app-day-calendar>
         </div>
-        <div class="dayCase" *ngIf="day.mDate.format('dd') !== 'Su'">
+        <div (click)="onClickDay(day)" class="dayCase" *ngIf="!day.isWeek" [ngClass]="{
+          'weekDay': false,
+          'hideDay' : !day.isSelectedMonth,
+          'hover' :true,
+          'today' : day.today
+        }">
           <app-day-calendar [dayDate]="day"></app-day-calendar>
         </div>
       </ion-col>

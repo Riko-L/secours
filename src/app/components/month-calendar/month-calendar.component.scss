@@ -4,14 +4,27 @@ ion-text {
 }
 .dayNames {
     font-size: x-large;
+    color: red;
 }
 app-day-calendar {
     font-size: x-large;
+}
+.hideDay{
+    display: none;
 }
 .dayCase{
     height: 150px;
     border-radius: 20px;
     background-color: darkgrey;
+}
+.today {
+    background-color: whitesmoke !important;
+}
+.hover:hover{
+    background-color: whitesmoke;
+}
+.weekDay{
+    background-color: rgb(192, 40, 40);    
 }
 @media screen and (max-width: 992px) {
     .dayCase {
@@ -38,6 +51,4 @@ app-day-calendar {
         font-size: medium;
     }
 }
-.dayCase:hover{
-    background-color: whitesmoke;
-}
+

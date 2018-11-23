@@ -12,4 +12,12 @@ export class HomePage {
   ngOnInit(): void {
   }
 
+
+
+
+  test(data){
+
+    console.log(data);
+  }
 }
+

@@ -1,9 +1,16 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import * as moment from 'moment';
 import * as _ from 'lodash';
-import { CalendarDate } from '../calendar-date';
+import { Events, DataBaseService } from '../../service/data-base.service';
 
-
+export interface CalendarDate {
+  mDate: moment.Moment;
+  selected?: boolean;
+  today?: boolean;
+  isWeek?: boolean;
+  isSelectedMonth?: boolean;
+  events?: Events[];
+}
 
 @Component({
   selector: 'app-month-calendar',
@@ -12,8 +19,12 @@ import { CalendarDate } from '../calendar-date';
 })
 export class MonthCalendarComponent implements OnInit, OnChanges {
 
-  currentDate = moment();
-  dayNames = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+  @Input()
+  locale: string;
+
+  events: Events[];
+  currentDate = moment().locale('fr');
+  dayNames = [0,1,2,3,4,5,6].map( data => this.currentDate.day(data).format('ddd'))
   weeks: CalendarDate[][] = [];
   sortedDates: CalendarDate[] = [];
 
@@ -22,10 +33,13 @@ export class MonthCalendarComponent implements OnInit, OnChanges {
   @Output()
   onSelectDate = new EventEmitter<CalendarDate>();
 
-  constructor() {}
+  constructor(private dataBaseService: DataBaseService) {}
 
   ngOnInit(): void {
-    this.generateCalendar();
+    this.dataBaseService.getAllEvents().subscribe( data => {
+      this.events = data
+      this.generateCalendar();
+   });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -54,9 +68,18 @@ export class MonthCalendarComponent implements OnInit, OnChanges {
     return moment(date).isSame(this.currentDate, 'month');
   }
 
+  isWeekDay(date: moment.Moment):boolean {
+    return moment(date).isSame(moment(date).isoWeekday("Sunday"));
+  }
   selectDate(date: CalendarDate): void {
     this.onSelectDate.emit(date);
   }
+  onClickDay(date: CalendarDate) {
+    this.onSelectDate.emit(date);
+  }
+  eventOfDay(date: moment.Moment): Events[]{
+    return this.events.filter( event =>  moment(event.start_time).isSame(date, 'day') ?event : null );
+   }
 
   // actions from calendar
 
@@ -105,13 +128,16 @@ export class MonthCalendarComponent implements OnInit, OnChanges {
     const firstOfMonth = moment(currentMoment).startOf('month').day();
     const firstDayOfGrid = moment(currentMoment).startOf('month').subtract(firstOfMonth, 'days');
     const start = firstDayOfGrid.date();
-    return _.range(start, start + 35)
+    return _.range(start, start + 42)
             .map((date: number): CalendarDate => {
               const d = moment(firstDayOfGrid).date(date);
               return {
                 today: this.isToday(d),
                 selected: this.isSelected(d),
+                isWeek: this.isWeekDay(d),
+                isSelectedMonth : this.isSelectedMonth(d),
                 mDate: d,
+                events: this.eventOfDay(d)
               };
             });
   }
