@@ -31,8 +31,21 @@ export interface Events {
 export interface Value {
   rev: string;
 }
+
+export interface Response {
+  ok:  boolean;
+  id:  string;
+  rev: string;
+}
+
+
+const username ='alf74';
+const password=  'kiedis74';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 
+    'Content-Type': 'application/json' ,
+    'Authorization': 'Basic ' +btoa(`${username}:${password}`)
+  })
 };
 
 @Injectable({
@@ -40,9 +53,12 @@ const httpOptions = {
 })
 export class DataBaseService {
 
+  
   dbcouch: string = "https://alf74.alwaysdata.net/data/alf74_agenda_papeteries/";
 
   all_docs: string = "_all_docs?include_docs=true";
+
+
 
   constructor(private http: HttpClient) {
     
@@ -55,7 +71,18 @@ export class DataBaseService {
     );
   }
 
+  postEvent(event: Events){
+    return this.http.post<Response>(this.dbcouch, event, httpOptions).pipe(
+      catchError(this.handleError('deleteEvent', []))
+    );
+  }
 
+  deleteEvent(event: Events){
+    const url = `${this.dbcouch}/${event._id}`;
+    return this.http.delete<Response>(url,httpOptions).pipe(
+      catchError(this.handleError('deleteEvent', []))
+    )
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
