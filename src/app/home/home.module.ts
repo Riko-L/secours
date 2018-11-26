@@ -11,7 +11,6 @@ import { MonthCalendarComponent } from '../month-calendar/month-calendar.compone
 import { DetailEventsComponent } from '../detail-events/detail-events.component';
 import { DayCalendarComponent } from '../day-calendar/day-calendar.component';
 
-
 @NgModule({
   imports: [
     CommonModule,

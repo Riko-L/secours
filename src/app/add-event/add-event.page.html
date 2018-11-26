@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Ajout d'évènement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <ion-item>
+              <ion-label position="floating">Titre</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="4">
+            <ion-item>
+              <ion-label position="floating">Date</ion-label>
+              <ion-datetime display-format="MMM DD, YYYY"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
+        <ion-row>
+          <ion-col size="3">
+            <ion-item>
+              <ion-label position="floating">Début</ion-label>
+              <ion-datetime display-format="H:mm"></ion-datetime>
+            </ion-item>
+          </ion-col>
+          <ion-col size="3">
+            <ion-item>
+              <ion-label position="floating">Fin</ion-label>
+              <ion-datetime display-format="H:mm"></ion-datetime>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Lieu</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row><br>
+        <ion-row>
+            <ion-col size="6" text-center>
+                <ion-button color="success">Valider</ion-button>
+            </ion-col>
+            <ion-col size="6" text-center>
+                <ion-button color="danger">Annuler</ion-button>
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+
+</ion-content>
