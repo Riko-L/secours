@@ -29,6 +29,7 @@ export class DetailEventsComponent implements OnInit ,OnChanges{
   }
 
   getEvents(date: CalendarDate){
+    console.log(date)
     this.events = date.events;
   }
  
