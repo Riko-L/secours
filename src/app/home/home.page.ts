@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component ,Input} from '@angular/core';
+import { CalendarDate } from '../components/month-calendar/month-calendar.component';
 
 @Component({
   selector: 'app-home',
@@ -7,17 +8,16 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  
+  dateCalendar: CalendarDate;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-
-
-
-  test(data){
-
-    console.log(data);
+  dateSelected(data: CalendarDate){
+    this.dateCalendar= data;
   }
 }
 
