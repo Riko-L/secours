@@ -3,7 +3,7 @@
         <ion-card-header>
             <ion-grid>
                 <ion-row align-items-center>
-                    <ion-col size-xs="6" size-md="8" size-lg="10">
+                    <ion-col size-xs="4" size-md="6" size-lg="8">
                         <ion-card-title>
                             {{ event.title }}
                         </ion-card-title>
@@ -13,6 +13,16 @@
                     </ion-col>
                     <ion-col size-xs="3" size-md="2" size-lg="1" text-center text-left>
                         <ion-label>j'en suis</ion-label>
+                    </ion-col>
+                    <ion-col size-xs="1" text-right>
+                        <ion-button  color="secondary">
+                            <ion-icon name="clipboard" text-right></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col size-xs="1" text-right>
+                        <ion-button  color="danger">
+                            <ion-icon name="close" text-right></ion-icon>
+                        </ion-button>
                     </ion-col>
                 </ion-row>
                 <ion-row>
