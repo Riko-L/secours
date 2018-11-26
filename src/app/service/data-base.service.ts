@@ -44,6 +44,7 @@ export class DataBaseService {
 
   all_docs: string = "_all_docs?include_docs=true";
 
+
   constructor(private http: HttpClient) {
     
   }
@@ -54,6 +55,7 @@ export class DataBaseService {
       catchError(this.handleError('getAllEvents', []))
     );
   }
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

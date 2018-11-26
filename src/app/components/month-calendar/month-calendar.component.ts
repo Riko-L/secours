@@ -20,11 +20,9 @@ export interface CalendarDate {
 export class MonthCalendarComponent implements OnInit, OnChanges {
 
   @Input()
-  locale: string;
-
   events: Events[];
   currentDate = moment().locale('fr');
-  dayNames = [0,1,2,3,4,5,6].map( data => this.currentDate.day(data).format('ddd'))
+  dayNames = [0,1,2,3,4,5,6].map( data => moment().day(data).format('ddd'))
   weeks: CalendarDate[][] = [];
   sortedDates: CalendarDate[] = [];
 
@@ -78,7 +76,9 @@ export class MonthCalendarComponent implements OnInit, OnChanges {
     this.onSelectDate.emit(date);
   }
   eventOfDay(date: moment.Moment): Events[]{
-    return this.events.filter( event =>  moment(event.start_time).isSame(date, 'day') ?event : null );
+    return this.events.filter( event => { 
+      return moment(event.start_time).isSame(date, 'day') && event.start_time !== undefined ?event : null;
+    });
    }
 
   // actions from calendar
@@ -116,6 +116,7 @@ export class MonthCalendarComponent implements OnInit, OnChanges {
   // generate the calendar grid
 
   generateCalendar(): void {
+    
     const dates = this.fillDates(this.currentDate);
     const weeks: CalendarDate[][] = [];
     while (dates.length > 0) {
