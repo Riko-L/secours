@@ -6,13 +6,19 @@
         <ion-icon slot="icon-only" name="skip-backward"></ion-icon>
       </ion-button>
     </ion-col>
-    <ion-col size-xs="6">
+    <ion-col size-xs="4">
       <ion-text>{{ currentDate.format('MMMM') + " " }}</ion-text>
       <ion-text>{{ currentDate.format('YYYY') }}</ion-text>
     </ion-col>
     <ion-col size-xs="3">
       <ion-button (click)="nextMonth()" color="dark">
         <ion-icon slot="icon-only" name="skip-forward"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size-xs="2">
+      <ion-button color="success" [routerLink]="['/add-event']">
+        <ion-icon slot="start" name="add"></ion-icon>
+        Add
       </ion-button>
     </ion-col>
   </ion-row>
