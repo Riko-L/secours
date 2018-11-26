@@ -1,5 +1,6 @@
 <ion-grid>
   <ion-row>
+      <ion-badge color="danger" *ngIf="dayDate.events.length">{{dayDate.events.length}}</ion-badge>
       <ion-label text-center>{{ dayDate.mDate.format('DD') }}</ion-label>
   </ion-row>
 </ion-grid>

@@ -6,10 +6,10 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 
-import {ButtonEventsComponent} from '../button-events/button-events.component';
-import { MonthCalendarComponent } from '../month-calendar/month-calendar.component';
-import { DetailEventsComponent } from '../detail-events/detail-events.component';
-import { DayCalendarComponent } from '../day-calendar/day-calendar.component';
+import {ButtonEventsComponent} from '../components/button-events/button-events.component';
+import { MonthCalendarComponent } from '../components/month-calendar/month-calendar.component';
+import { DetailEventsComponent } from '../components/detail-events/detail-events.component';
+import { DayCalendarComponent } from '../components/day-calendar/day-calendar.component';
 
 
 @NgModule({
@@ -38,3 +38,4 @@ import { DayCalendarComponent } from '../day-calendar/day-calendar.component';
   ]
 })
 export class HomePageModule { }
+

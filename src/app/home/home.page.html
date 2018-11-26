@@ -7,8 +7,9 @@
 </ion-header>
 
 <ion-content padding>
-  <app-month-calendar></app-month-calendar>
-  <app-detail-events></app-detail-events>
+  <app-month-calendar (onSelectDate)="dateSelected($event)"></app-month-calendar>
+  <app-detail-events [dateCalendarInput]="dateCalendar"></app-detail-events>
   <br/>
   <app-button-events></app-button-events>
 </ion-content>
+ 

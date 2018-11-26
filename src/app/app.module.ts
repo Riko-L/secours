@@ -8,9 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DayCalendarComponent } from './day-calendar/day-calendar.component';
-import { MonthCalendarComponent } from './month-calendar/month-calendar.component';
-import { EventsService } from './events.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -18,7 +15,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

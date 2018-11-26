@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { Input } from '@angular/core';
-import { EventsService, Events } from '../events.service';
+import { Events, DataBaseService } from '../../service/data-base.service';
 
 @Component({
   selector: 'app-day-calendar',
@@ -13,10 +13,10 @@ export class DayCalendarComponent implements OnInit {
   @Input() dayDate: moment.Moment;
   events : Events[];
 
-  constructor(private eventsService:EventsService) { }
+  constructor(private dataBaseService : DataBaseService) { }
 
   ngOnInit() {
-    this.eventsService.getAllEvents().subscribe(data => this.events = data);
+    this.dataBaseService.getAllEvents().subscribe(data => this.events = data);
     
   }
 
