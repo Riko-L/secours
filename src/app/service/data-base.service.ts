@@ -71,13 +71,13 @@ export class DataBaseService {
     );
   }
 
-  postEvent(event: Events){
-    return this.http.post<Response>(this.dbcouch, event, httpOptions).pipe(
-      catchError(this.handleError('deleteEvent', []))
-    );
+  postEvent(event: Events):Observable<Response>{
+    return this.http.post<Response>(this.dbcouch, event, httpOptions);
   }
 
   deleteEvent(event: Events){
+    console.log(event);
+    return;
     const url = `${this.dbcouch}/${event._id}`;
     return this.http.delete<Response>(url,httpOptions).pipe(
       catchError(this.handleError('deleteEvent', []))
