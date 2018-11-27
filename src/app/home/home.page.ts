@@ -10,6 +10,7 @@ export class HomePage {
 
   
   dateCalendar: CalendarDate;
+  dateUpdate: CalendarDate;
 
   constructor() { }
 
@@ -18,6 +19,10 @@ export class HomePage {
 
   dateSelected(data: CalendarDate){
     this.dateCalendar= data;
+  }
+
+  updateCal(data: CalendarDate){
+    this.dateUpdate= data;
   }
 }
 
