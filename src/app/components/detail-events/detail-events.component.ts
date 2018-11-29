@@ -2,15 +2,18 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitte
 import { DataBaseService, Events, Participant } from '../../service/data-base.service';
 import * as moment from 'moment';
 import { CalendarDate } from '../month-calendar/month-calendar.component';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from './modal-page/modal-page.page';
 
 @Component({
   selector: 'app-detail-events',
   templateUrl: './detail-events.component.html',
   styleUrls: ['./detail-events.component.scss']
 })
+
 export class DetailEventsComponent implements OnInit, OnChanges {
 
-
+  @Input()
   events: Events[];
 
   @Input()
@@ -21,7 +24,7 @@ export class DetailEventsComponent implements OnInit, OnChanges {
 
   @Output()
   calendarUpdate: EventEmitter<CalendarDate> = new EventEmitter<CalendarDate>();
-  constructor(private databaseService: DataBaseService) { }
+  constructor(private databaseService: DataBaseService,private modalController: ModalController) { }
 
   ngOnInit() {
 
@@ -48,6 +51,17 @@ export class DetailEventsComponent implements OnInit, OnChanges {
     });
   }
 
+  async openModal(id: any) {
+
+    const modalPage = await this.modalController.create({
+        component: ModalPage,
+        componentProps: {
+            event: this.events.find( event => event._id === id)
+        }
+    });
+    return await modalPage.present();
+    }
+  
   iamIn(event: Events): void {
     if (event.participants != undefined) {
       if (this.iamInProperty && !event.participants.includes(sessionStorage.getItem('loginName') as Participant)) {

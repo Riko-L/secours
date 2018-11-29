@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
+   { path: 'modal-page', loadChildren: './components/detail-events/modal-page/modal-page.module#ModalPageModule' },
   { path: '', redirectTo: 'menbers/home', pathMatch: 'full' },
   {
     path: 'login',
@@ -25,3 +26,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
