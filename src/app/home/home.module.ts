@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormsModule} from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { HomePage } from './home.page';
 
@@ -11,17 +11,21 @@ import { MonthCalendarComponent } from '../components/month-calendar/month-calen
 import { DetailEventsComponent } from '../components/detail-events/detail-events.component';
 import { DayCalendarComponent } from '../components/day-calendar/day-calendar.component';
 
+
+const routes: Routes = [
+  {
+    path: '',
+    component: HomePage
+  }
+];
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: HomePage
-      }
-    ])
+    RouterModule.forChild(routes)
   ],
   declarations: [
     ButtonEventsComponent,
