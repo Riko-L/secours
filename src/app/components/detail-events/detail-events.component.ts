@@ -2,35 +2,44 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { DataBaseService, Events } from '../../service/data-base.service';
 import * as moment from 'moment';
 import { CalendarDate } from '../month-calendar/month-calendar.component';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from './modal-page/modal-page.page';
 
 @Component({
   selector: 'app-detail-events',
   templateUrl: './detail-events.component.html',
   styleUrls: ['./detail-events.component.scss']
 })
-export class DetailEventsComponent implements OnInit ,OnChanges{
- 
+export class DetailEventsComponent implements OnInit ,OnChanges {
+    @Input()
+    events: Events[];
+    @Input()
+    dateCalendarInput: CalendarDate;
 
-  events: Events[];
-
-  @Input()
-  dateCalendarInput:CalendarDate;
-
-  constructor() { }
-
-  ngOnInit() {
-  
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if(changes.dateCalendarInput.currentValue) {
-      this.getEvents(this.dateCalendarInput);
+    constructor(private modalController: ModalController) {
     }
-  }
 
-  getEvents(date: CalendarDate){
-    console.log(date)
-    this.events = date.events;
-  }
- 
+    ngOnInit() {
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.dateCalendarInput.currentValue) {
+            this.getEvents(this.dateCalendarInput);
+        }
+    }
+
+    getEvents(date: CalendarDate) {
+        this.events = date.events;
+    }
+
+    async openModal(id: any) {
+
+        const modalPage = await this.modalController.create({
+            component: ModalPage,
+            componentProps: {
+                event: this.events.find( event => event._id === id)
+            }
+        });
+        return await modalPage.present();
+    }
 }

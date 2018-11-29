@@ -115,7 +115,7 @@ export class MonthCalendarComponent implements OnInit, OnChanges {
 
   // generate the calendar grid
 
-  generateCalendar(): void {
+  public generateCalendar(): void {
     
     const dates = this.fillDates(this.currentDate);
     const weeks: CalendarDate[][] = [];
@@ -143,4 +143,3 @@ export class MonthCalendarComponent implements OnInit, OnChanges {
             });
   }
 }
-

@@ -21,7 +21,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule
-
   ],
   providers: [
     StatusBar,
