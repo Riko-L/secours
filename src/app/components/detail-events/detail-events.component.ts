@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { DataBaseService, Events } from '../../service/data-base.service';
+import { DataBaseService, Events, Participant } from '../../service/data-base.service';
 import * as moment from 'moment';
 import { CalendarDate } from '../month-calendar/month-calendar.component';
 
@@ -8,37 +8,65 @@ import { CalendarDate } from '../month-calendar/month-calendar.component';
   templateUrl: './detail-events.component.html',
   styleUrls: ['./detail-events.component.scss']
 })
-export class DetailEventsComponent implements OnInit ,OnChanges{
- 
-  
+export class DetailEventsComponent implements OnInit, OnChanges {
+
+
   events: Events[];
 
   @Input()
-  dateCalendarInput:CalendarDate;
+  dateCalendarInput: CalendarDate;
+
+  @Input()
+  iamInProperty: boolean = true;
 
   @Output()
   calendarUpdate: EventEmitter<CalendarDate> = new EventEmitter<CalendarDate>();
   constructor(private databaseService: DataBaseService) { }
 
   ngOnInit() {
-  
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes.dateCalendarInput.currentValue) {
+    if (changes.dateCalendarInput.currentValue) {
       this.getEvents(this.dateCalendarInput);
+    }
+    if (changes.iamInProperty) {
+      console.log(this.iamInProperty)
     }
   }
 
-  getEvents(date: CalendarDate){
+  getEvents(date: CalendarDate) {
     this.events = date.events;
   }
- 
-  deleteEvent(event: Events){
+
+  deleteEvent(event: Events) {
     this.databaseService.deleteEvent(event).subscribe(data => {
       this.calendarUpdate.emit(this.dateCalendarInput);
       const el = this.events.findIndex(tabevent => tabevent._id === data.id);
-      this.events.splice(el,1);
+      this.events.splice(el, 1);
     });
+  }
+
+  iamIn(event: Events): void {
+    if (event.participants != undefined) {
+      if (this.iamInProperty && !event.participants.includes(sessionStorage.getItem('loginName') as Participant)) {
+        event.participants.push(sessionStorage.getItem('loginName') as Participant)
+      } else {
+        if (event.participants.includes(sessionStorage.getItem('loginName') as Participant)) {
+          const userIndex = event.participants.findIndex(data => sessionStorage.getItem('loginName') == data.participant);
+          event.participants.splice(userIndex, 1);
+        }
+      }
+    } else {
+      event.participants = [];
+      event.participants.push(sessionStorage.getItem('loginName') as Participant)
+    }
+  }
+
+  iamIcheck(event:Events) {
+    if (event.participants != undefined) {
+    return event.participants.includes(sessionStorage.getItem('loginName') as Participant);
+    }
   }
 }

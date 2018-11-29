@@ -30,6 +30,7 @@ export class AuthenticationService {
  
   login(email:string) {
     return this.storage.set(TOKEN_KEY, email).then(() => {
+      sessionStorage.setItem('loginName', email)
       this.authenticationState.next(true);
     });
   }

@@ -15,17 +15,23 @@ export interface Row {
   value: Value;
   doc:   Events;
 }
+export interface Participant{
+  participant?: string;
+}
 
 export interface Events {
   _id:                  string;
   _rev:                 string;
   validate_doc_update?: string;
+  creator?:             string;
   language?:            string;
   title?:               string;
   start_time?:          string;
   end_time?:            string;
   location?:            string;
   description?:         string;
+  participants?:        Participant[];
+
 }
 
 export interface Value {

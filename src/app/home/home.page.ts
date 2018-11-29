@@ -17,7 +17,7 @@ export class HomePage {
   constructor(private authService: AuthenticationService, private storage: Storage) { }
 
   ngOnInit(): void {
-    this.storage.get('auth-token').then(login => this.loginName = login);
+   this.loginName= sessionStorage.getItem('loginName');
   }
 
   dateSelected(data: CalendarDate){

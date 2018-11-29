@@ -9,7 +9,7 @@
                         </ion-card-title>
                     </ion-col>
                     <ion-col size-xs="3" size-md="2" size-lg="1" text-center text-right>
-                        <ion-toggle mode="ios" color="success"></ion-toggle>
+                        <ion-toggle mode="" color="success" [(ngModel)]="iamInProperty" [checked]=iamIcheck(event) (ionChange)="iamIn(event)"></ion-toggle>
                     </ion-col>
                     <ion-col size-xs="3" size-md="2" size-lg="1" text-center text-left>
                         <ion-label>j'en suis</ion-label>

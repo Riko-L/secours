@@ -13,7 +13,7 @@ export class DashbordPage implements OnInit {
   constructor(private authService: AuthenticationService,private storage:Storage) { }
 
   ngOnInit() {
-    this.storage.get('auth-token').then(login => this.loginName = login);
+    this.loginName= sessionStorage.getItem('loginName');
   }
 
   logout() {
