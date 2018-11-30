@@ -20,7 +20,7 @@ export class DetailEventsComponent implements OnInit, OnChanges {
   dateCalendarInput: CalendarDate;
 
   @Input()
-  iamInProperty: boolean = true;
+  iamInProperty: boolean = false;
 
   @Output()
   calendarUpdate: EventEmitter<CalendarDate> = new EventEmitter<CalendarDate>();
@@ -63,18 +63,22 @@ export class DetailEventsComponent implements OnInit, OnChanges {
     }
   
   iamIn(event: Events): void {
+    
     if (event.participants != undefined) {
       if (this.iamInProperty && !event.participants.includes(sessionStorage.getItem('loginName') as Participant)) {
         event.participants.push(sessionStorage.getItem('loginName') as Participant)
+        this.databaseService.putEvent(event);
       } else {
         if (event.participants.includes(sessionStorage.getItem('loginName') as Participant)) {
           const userIndex = event.participants.findIndex(data => sessionStorage.getItem('loginName') == data.participant);
           event.participants.splice(userIndex, 1);
+          this.databaseService.putEvent(event);
         }
       }
     } else {
       event.participants = [];
       event.participants.push(sessionStorage.getItem('loginName') as Participant)
+      this.databaseService.putEvent(event);
     }
   }
 
